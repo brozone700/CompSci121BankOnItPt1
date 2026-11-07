@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class CheckingAccount implements HasMenu, Serializable {
     
-    private double balance;
+	private double balance;
     static Scanner input = new Scanner(System.in);
     
     public CheckingAccount() {
