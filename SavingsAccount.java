@@ -1,8 +1,6 @@
 public class SavingsAccount extends CheckingAccount {
  
-    private double interestRate;
- 
-    // TODO: add constructors that call super(...) if you want them
+    private double interestRate = 0.02;
  
     public static void main(String[] args) {
         SavingsAccount account = new SavingsAccount();
