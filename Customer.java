@@ -15,7 +15,7 @@ public class Customer extends User {
     }
  
     public static void main(String[] args) {
-	    Customer customer = new Customer();     // Alice, PIN 0000
+	    Customer customer = new Customer();
 	    if (customer.login()) {
 	        System.out.println("Login Successful");
 	        customer.start();
