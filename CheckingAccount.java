@@ -21,7 +21,7 @@ public class CheckingAccount implements HasMenu, Serializable {
  
     @Override
     public String menu() {
-        System.out.println("Account Menu");
+        System.out.println("\nAccount Menu\n");
         System.out.println("0) quit\n1) check balance\n2) make a deposit\n3) make a withdrawal");
         System.out.print("Please enter a number 0-3: ");
         return input.nextLine().trim();
