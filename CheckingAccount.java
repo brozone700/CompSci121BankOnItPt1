@@ -1,56 +1,63 @@
 import java.io.Serializable;
 import java.util.Scanner;
 
-/**
- * A checking account: a wrapper around a balance with a menu.
- */
 public class CheckingAccount implements HasMenu, Serializable {
-
+    
     private double balance;
-
-    // TODO: decide how to read input (Scanner field, or create one where needed)
-
+    static Scanner input = new Scanner(System.in);
+    
     public CheckingAccount() {
-        // TODO: set a starting balance of 0
+        this.balance = 0;
     }
-
+ 
     public CheckingAccount(double balance) {
-        // TODO: set the starting balance
+        this.balance = balance;
     }
-
+ 
     public static void main(String[] args) {
-        // TODO: create a CheckingAccount and call start() to test it
+        CheckingAccount account = new CheckingAccount();
+        account.start();
     }
-
+ 
     @Override
     public String menu() {
-        // TODO: print the account menu, read the choice, return it
-        return "";
+        System.out.println("Account Menu");
+        System.out.println("0) quit\n1) check balance\n2) make a deposit\n3) make a withdrawal");
+        System.out.print("Please enter a number 0-3: ");
+        return input.nextLine().trim();
     }
-
+ 
     @Override
     public void start() {
-        // TODO: loop on menu(), call checkBalance/makeDeposit/makeWithdrawal, quit on 0
+        string choice = ""
+        while ( choice != "0" ){
+            choice = menu()
+            switch (choice) {
+                case "1" -> checkBalance();
+                case "2" -> makeDeposit();
+                case "3" -> makeWithdrawal();
+                default -> System.out.println("Invalid choice.");
+            }
+        }
     }
-
+ 
     public double getBalance() {
-        // TODO
-        return 0.0;
+        return balance;
     }
-
+ 
     public String getBalanceString() {
-        // TODO: return balance formatted with String.format, e.g. "$987.66"
-        return "";
+        return String.format("$%.2f", balance);
     }
-
+ 
     public void setBalance(double balance) {
-        // TODO
+        this.balance = balance;
     }
-
+ 
     public void checkBalance() {
-        // TODO: print "Checking balance..." and "Current balance: $..."
+        System.out.println("Checking balance...");
+        System.out.println("Current balance: " + getBalanceString());
     }
-
+ 
     private double getDouble() {
         // TODO: read a double from the user; return 0 on bad input (try/catch)
         return 0.0;
