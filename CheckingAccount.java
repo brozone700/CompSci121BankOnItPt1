@@ -29,10 +29,11 @@ public class CheckingAccount implements HasMenu, Serializable {
  
     @Override
     public void start() {
-        string choice = ""
-        while ( choice != "0" ){
-            choice = menu()
+        boolean Keepgoing = true;
+        while (Keepgoing){
+            string choice = menu();
             switch (choice) {
+                case "0" -> Keepgoing = false;
                 case "1" -> checkBalance();
                 case "2" -> makeDeposit();
                 case "3" -> makeWithdrawal();
@@ -59,15 +60,22 @@ public class CheckingAccount implements HasMenu, Serializable {
     }
  
     private double getDouble() {
-        // TODO: read a double from the user; return 0 on bad input (try/catch)
-        return 0.0;
+        return input.nextDouble();
     }
 
     public void makeDeposit() {
-        // TODO: print "Making a deposit...", prompt, update balance, show new balance
+        System.out.println("Making a deposit...");
+        System.out.print("How much to deposit? ");
+        double amount = getDouble();
+        setBalance(getBalance() + amount);
+        System.out.println("New balance: " + getBalanceString());
     }
 
     public void makeWithdrawal() {
-        // TODO: print "Making a withdrawal...", prompt, update balance, show new balance
+        System.out.println("Making a withdrawal...");
+        System.out.print("How much to withdraw? ");
+        double amount = getDouble();
+        setBalance(getBalance() - amount);
+        System.out.println("New balance: " + getBalanceString());
     }
 }
