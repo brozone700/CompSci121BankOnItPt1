@@ -1,4 +1,8 @@
+import java.util.Scanner;
+
 public class Customer extends User {
+	
+	private static Scanner input = new Scanner(System.in);
  
     private CheckingAccount checking;
     private SavingsAccount savings;
@@ -36,7 +40,7 @@ public class Customer extends User {
     public void start() {
 		boolean KeepGoing = true;
 		while (KeepGoing){
-			string choice = menu();
+			String choice = menu();
 			switch (choice) {
                 case "0" -> KeepGoing = false;
 	            case "1" -> {
