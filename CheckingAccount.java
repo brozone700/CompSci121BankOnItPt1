@@ -31,7 +31,7 @@ public class CheckingAccount implements HasMenu, Serializable {
     public void start() {
         boolean Keepgoing = true;
         while (Keepgoing){
-            string choice = menu();
+            String choice = menu();
             switch (choice) {
                 case "0" -> Keepgoing = false;
                 case "1" -> checkBalance();
