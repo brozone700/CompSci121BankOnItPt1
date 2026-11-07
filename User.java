@@ -5,11 +5,13 @@ public abstract class User implements HasMenu, Serializable {
     private String userName;
     private String PIN;
  
-    /** Prompts for userName and PIN, then checks them. */
     public boolean login() {
-        // TODO: prompt for user name and PIN, then call login(userName, PIN)
-        return false;
-    }
+	    System.out.print("User name: ");
+	    String name = CheckingAccount.input.nextLine().trim();
+	    System.out.print("PIN: ");
+	    String pin = CheckingAccount.input.nextLine().trim();
+	    return login(name, pin);
+	}
  
     public boolean login(String userName, String PIN) {
         return this.userName.equals(userName) && this.PIN.equals(PIN);
@@ -30,7 +32,6 @@ public abstract class User implements HasMenu, Serializable {
     public String getPIN() {
         return PIN;
     }
- 
-    /** Each subclass produces its own report. */
+	
     public abstract String getReport();
 }
