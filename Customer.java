@@ -15,23 +15,50 @@ public class Customer extends User {
     }
  
     public static void main(String[] args) {
-        // TODO: create a Customer, call login(), then start() if it succeeds
-    }
+	    Customer customer = new Customer();     // Alice, PIN 0000
+	    if (customer.login()) {
+	        System.out.println("Login Successful");
+	        customer.start();
+	    } else {
+	        System.out.println("Login Failed");
+	    }
+	}
  
     @Override
     public String menu() {
-        // TODO: print the Customer Menu (0 Exit, 1 Checking, 2 Savings, 3 change PIN)
-        return "";
+		System.out.println("Customer Menu\n");
+		System.out.println("0) Exit\n1) Manage Checking Account\n2) Manage Savings Account\n3) Change PIN");
+		System.out.print("Please enter a number 0-3: ");
+        return input.nextLine().trim();
     }
  
     @Override
     public void start() {
-        // TODO: loop on menu(); route to checking.start(), savings.start(), changePIN()
+		boolean KeepGoing = true;
+		while (KeepGoing){
+			string choice = menu();
+			switch (choice) {
+                case "0" -> KeepGoing = false;
+	            case "1" -> {
+	                System.out.println("Checking Account");
+	                checking.start();
+	            }
+	            case "2" -> {
+	                System.out.println("Savings Account");
+	                savings.start();
+	            }
+	            case "3" -> changePIN();
+	            default -> System.out.println("Invalid choice.");
+            }
+		}
     }
  
     public void changePIN() {
-        // TODO: prompt for a new PIN and call setPIN
-    }
+	    System.out.print("Enter new PIN: ");
+	    String newPIN = CheckingAccount.input.nextLine().trim();
+	    setPIN(newPIN);
+	    System.out.println("PIN changed.");
+	}
  
     @Override
     public String getReport() {
