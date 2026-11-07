@@ -60,8 +60,10 @@ public class CheckingAccount implements HasMenu, Serializable {
     }
  
     private double getDouble() {
-        return input.nextDouble();
-    }
+	    double value = input.nextDouble();
+	    input.nextLine();   // throw away the leftover Enter
+	    return value;
+	}
 
     public void makeDeposit() {
         System.out.println("Making a deposit...");
